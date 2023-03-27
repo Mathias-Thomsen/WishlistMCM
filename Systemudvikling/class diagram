@@ -1,24 +1,8 @@
 ```mermaid
-classDiagram
-    class Animal {
-        - int age
-        + void eat()
-        + void sleep()
-    }
-    class Dog {
-        - string breed
-        + void bark()
-    }
-    class Cat {
-        - string color
-        + void meow()
-    }
-    class Bird {
-        - string species
-        + void chirp()
-    }
-    Animal <|-- Dog
-    Animal <|-- Cat
-    Animal <|-- Bird
-    ``
-   
+graph TD;
+    classDef abstractClass fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef concreteClass fill:#fff,stroke:#333,stroke-width:2px;
+    class A[Abstract Class]:::abstractClass;
+    class B[Concrete Class]:::concreteClass;
+    A <|-- B;
+```
