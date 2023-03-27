@@ -3,7 +3,7 @@ name: Issue Branch Workflow
 on:
   push:
     branches:
-      - main
+      - '*/issue*' # Trigger only when a branch with 'issue' in the name is pushed
 
 jobs:
   merge_and_test:
