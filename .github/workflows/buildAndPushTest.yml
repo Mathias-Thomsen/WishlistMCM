@@ -15,7 +15,7 @@ jobs:
       
       - name: Merge branch onto main
         run: |
-          git checkout master
+          git checkout main
           git merge --no-ff "${{ github.head_ref }}"
           
       - name: Build and test
@@ -28,4 +28,4 @@ jobs:
       - name: Commit and push changes
         if: success()
         run: |
-          git push origin master
+          git push origin main
