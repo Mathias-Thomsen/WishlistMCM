@@ -1,0 +1,24 @@
+```mermaid
+classDiagram
+    class Animal {
+        - int age
+        + void eat()
+        + void sleep()
+    }
+    class Dog {
+        - string breed
+        + void bark()
+    }
+    class Cat {
+        - string color
+        + void meow()
+    }
+    class Bird {
+        - string species
+        + void chirp()
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat
+    Animal <|-- Bird
+    ``
+   
