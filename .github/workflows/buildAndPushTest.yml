@@ -1,31 +1,24 @@
-name: Issue Branch Workflow
+name: LAMJ stack
 
-on:
-  push:
-    branches:
-      - main 
+on: [push]
 
 jobs:
-  merge_and_test:
+ 
+  maven:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Merge branch onto main
+      - uses: actions/checkout@v3
+      - name: Output state
         run: |
-          git checkout main
-          git merge --no-ff "${{ github.head_ref }}"
-          
-      - name: Build and test
-        run: |
-          # Run build and test commands here
-          # Example: 
-          echo "Build and test step"
-          exit 0
-          
-      - name: Commit and push changes
-        if: success()
-        run: |
-          git push origin main
+          pwd
+          ls
+          env | sort
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots package
+      - name: Run the Maven verify phase
+        run: mvn --batch-mode --update-snapshots verify  
