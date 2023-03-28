@@ -31,15 +31,23 @@ Instructions on how to install and set up the project. Include any prerequisites
 ## Usage
 
 1. Open your web browser and navigate to the WishlistMCM website.
+___
 2. Click on the "Sign up" button to create a new account, or "Log in" if you already have an account.
+___
 3. Once you're logged in, you can start creating new wishlists by clicking on the "New List" button.
+___
 4. Enter a name for your list, and optionally add a description.
+___
 5. You can add items to your list by clicking on the "Add Item" button, then entering details such as name, description, and link. You can also set a priority level and add notes.
+___
 6. You can share your list with friends and family members by clicking on the "Share" button and entering their email addresses.
+___
 7. To view your lists, click on the "Lists" button in the main menu.
+___
 8. To edit an existing list, click on the list name and then click on the "Edit" button.
+___
 9. To delete a list, click on the list name and then click on the "Delete" button.
-
+___
 ## Contributing
 
 Information on how others can contribute to the project, including any guidelines or processes for submitting pull requests or bug reports.
