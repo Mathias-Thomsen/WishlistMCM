@@ -1,25 +1,26 @@
 ```mermaid
 erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    PRODUCT ||--o{ LINE-ITEM : includes
+    CUSTOMER ||--o{ WISHLIST : places
+    WISHLIST ||--o{ WISH : contains
+    WISH ||--o{ LINE-ITEM : includes
     CUSTOMER {
-        string name
+        int id 
+        string firstName
+        string lastName
         string email
-        string phone
+        Date birthday
+        
     }
-    ORDER {
-        string orderNumber
-        date orderDate
-        enum orderStatus
+    WISHLIST {
+        int id
+        varchar(255) wishListName
     }
-    PRODUCT {
-        string productId
-        string productName
-        decimal price
+    WISH {
+        int id
+        varchar(255) wishName
+        varchar(255) linkToWich
+        varchar(max) wishDescription 
+        decimal wishPrice
     }
-    LINE-ITEM {
-        decimal quantity
-        decimal price
-    }
+    
 ```
