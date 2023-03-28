@@ -1,6 +1,4 @@
-package com.example.wishlistmcm.entity;
-
-import java.util.ArrayList;
+package com.example.wishlistmcm.entites;
 
 public class User {
     private String email;
