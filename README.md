@@ -1,8 +1,10 @@
-# WishlistMCM
 
-
-![Alt text](/image/logo-lg.png)
-
+<div align="center">
+<p>
+  <h1> WishlistMCM </h1>
+  <img src="/image/logo-lg.png" alt="Alt Text" width="50%" height="50%">
+</p>
+</div>
 
 ## Table of Contents
 
