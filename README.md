@@ -1,7 +1,7 @@
 # WishlistMCM
 
 
-![Alt text](/image/logo.png)
+![Alt text](/image/logo-lg.png)
 
 
 ## Table of Contents
