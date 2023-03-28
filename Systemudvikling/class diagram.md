@@ -1,28 +1,31 @@
 ```mermaid
----
-title: Animal example
----
 classDiagram
-    note "From Duck till Zebra"
-    Animal <|-- Duck
-    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
-    Animal <|-- Fish
-    Animal <|-- Zebra
-    Animal : +int age
-    Animal : +String gender
-    Animal: +isMammal()
-    Animal: +mate()
-    class Duck{
-        +String beakColor
-        +swim()
-        +quack()
-    }
-    class Fish{
+    note "From Model till Service"
+    Model <|-- Entity
+    Model <|-- Repository
+    Entity <|-- Service
+    class Controller{
         -int sizeInFeet
         -canEat()
     }
-    class Zebra{
+    class Model{
         +bool is_wild
         +run()
     }
-```
+    class Entity{
+        +int age
+        +String gender
+        +isMammal()
+        +mate()
+        +bool is_wild
+        +run()
+    }
+    class Repository{
+        +bool is_wild
+        +run()
+    }
+    class Service{
+        +bool is_wild
+        +run()
+    }
+
