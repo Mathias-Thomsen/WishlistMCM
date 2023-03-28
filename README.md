@@ -1,7 +1,7 @@
 
 <div align="center">
 <p>
-  <h1> Wishlist </h1>
+  <h1>Wishlist</h1>
   <img src="/image/logo-lg.png" alt="Alt Text" width="50%" height="50%">
 </p>
 </div>
@@ -30,7 +30,15 @@ Instructions on how to install and set up the project. Include any prerequisites
 
 ## Usage
 
-Instructions on how to use the project, including any commands or arguments that need to be run. Provide examples if possible.
+1. Open your web browser and navigate to the WishlistMCM website.
+2. Click on the "Sign up" button to create a new account, or "Log in" if you already have an account.
+3. Once you're logged in, you can start creating new wishlists by clicking on the "New List" button.
+4. Enter a name for your list, and optionally add a description.
+5. You can add items to your list by clicking on the "Add Item" button, then entering details such as name, description, and link. You can also set a priority level and add notes.
+6. You can share your list with friends and family members by clicking on the "Share" button and entering their email addresses.
+7. To view your lists, click on the "Lists" button in the main menu.
+8. To edit an existing list, click on the list name and then click on the "Edit" button.
+9. To delete a list, click on the list name and then click on the "Delete" button.
 
 ## Contributing
 
