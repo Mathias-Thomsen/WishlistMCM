@@ -65,8 +65,7 @@ Acknowledgements of any third-party resources used in the project or people who 
 Information on how to contact the project owners or maintainers.
 
 ## Additional Notes
-
-Any additional notes, warnings, or disclaimers about the project.
+Colorcode for background: #74B396
 
 ## FAQs
 
