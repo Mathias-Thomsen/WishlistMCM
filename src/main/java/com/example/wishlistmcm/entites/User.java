@@ -4,20 +4,26 @@ import java.sql.Date;
 
 public class User {
     private int userId;
-    private String userName;
+    private String fullName;
     private String email;
     private String password;
+
 
 
     public User() {
     }
 
-    public User(int userId, String userName, String email, String password) {
-        this.userId = userId;
-        this.userName = userName;
+    public User(String email, String fullName, String password) {
+        this.email = email;
+        this.fullName = fullName;
+        this.password = password;
+    }
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
+
+
 
     public int getUserId() {
         return userId;
@@ -27,12 +33,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
