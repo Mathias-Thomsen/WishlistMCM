@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public String processSignup(@RequestParam("email") String email,
-                                @RequestParam("fullname") String fullname,
+                                @RequestParam("userName") String fullname,
                                 @RequestParam("password") String password) {
         return "redirect:/";
     }
