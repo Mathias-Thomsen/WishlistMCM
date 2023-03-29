@@ -17,4 +17,24 @@ public class UserController {
         return "index";
     }
 
+   @GetMapping(value = {"/login"})
+        public String login(){
+            return "login";
+       }
+
+       @GetMapping(value = {"/signup"})
+       public String create(){
+        return "signup";
+       }
+
+       @GetMapping(value = {"/wishlists"})
+    public String wishlists(){
+        return "wishlists";
+       }
+
+       @GetMapping(value = {"/wishes"})
+    public String wishes(){
+        return "wishes";
+       }
+
 }
