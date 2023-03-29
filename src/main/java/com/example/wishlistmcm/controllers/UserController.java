@@ -1,41 +1,28 @@
 package com.example.wishlistmcm.controllers;
 
-import com.example.wishlistmcm.repositories.DbManager;
-import com.example.wishlistmcm.service.UserService;
+import com.example.wishlistmcm.entites.User;
+import com.example.wishlistmcm.repositories.IRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping({""})
 public class UserController {
 
-    UserService userService;
+    IRepository repository;
+    public UserController(ApplicationContext context, @Value("${wishlist.repository.impl}") String impl) {
+        repository = (IRepository) context.getBean(impl);
+    }
 
     @GetMapping(value = {"/"})
     public String index() {
         return "index";
     }
-
-    @GetMapping(value = {"/login"})
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping(value = {"/signup"})
-    public String create() {
-        return "signup";
-    }
-
-    @PostMapping("/signup")
-    public String processSignup(@RequestParam("email") String email,
-                                @RequestParam("userName") String fullname,
-                                @RequestParam("password") String password) {
-        return "redirect:/";
-    }
-
 
     @GetMapping(value = {"/wishlists"})
     public String wishlists() {
@@ -46,5 +33,8 @@ public class UserController {
     public String wishes() {
         return "wishes";
     }
+
+
+
 
 }
