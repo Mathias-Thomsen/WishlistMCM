@@ -1,0 +1,29 @@
+/* styles/styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #4caf50;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.button.login {
+    background-color: #2196f3;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
