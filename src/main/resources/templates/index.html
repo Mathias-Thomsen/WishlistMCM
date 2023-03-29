@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Wishlist MCM</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link th:href="@{/styles.css}" rel="stylesheet">
 </head>
 <body>
-
+<div class="buttons">
+    <a th:href="@{/login}" class="button login">Login</a>
+    <a th:href="@{/signup}" class="button signup">Signup</a>
+</div>
 </body>
 </html>
