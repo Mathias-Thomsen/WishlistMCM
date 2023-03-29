@@ -1,4 +1,4 @@
-package com.example.wishlistmcm.repositories;
+package com.example.wishlistmcm.utility;
 
 import java.io.FileInputStream;
 import java.io.IOException;
