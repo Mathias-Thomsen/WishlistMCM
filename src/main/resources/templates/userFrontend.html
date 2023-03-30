@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>UserFrontend</title>
@@ -7,9 +7,25 @@
 <body>
 <h1>Frontend</h1>
 
+<h2>Wishlists:</h2>
+<ul>
+    <li th:each="wishlist : ${userWishlists}">
+        <h3 th:text="${wishlist.getWishListName()}"></h3>
+        <ul>
+            <li th:each="wish : ${wishlist.getUserwishes()}">
+                <div>
+                    <h4 th:text="${wish.wishName}"></h4>
+                    <p th:text="${wish.wishDescription}"></p>
+                    <p th:text="${wish.price}"></p>
+                    <a th:href="${wish.wishLink}">Link to Wish</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
 
 <form action="/createWishlist" method="get">
-    <input type="submit" value="Wishlist">
+    <input type="submit" value="Create Wishlist">
 </form>
 
 <form action="/logout" method="get">

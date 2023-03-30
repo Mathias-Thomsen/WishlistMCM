@@ -1,5 +1,6 @@
 package com.example.wishlistmcm.controllers;
 
+import com.example.wishlistmcm.DTO.UserAllWishListsDTO;
 import com.example.wishlistmcm.entites.User;
 import com.example.wishlistmcm.entites.Wishlist;
 import com.example.wishlistmcm.repositories.IRepository;
@@ -10,6 +11,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping({""})
@@ -25,10 +28,13 @@ public class UserController {
         int user1 = (int) request.getSession().getAttribute("userId");
 
         if (user1 != 0 ){
+            List<UserAllWishListsDTO> userWishlists = repository.getUserWishlists(user1);
+            model.addAttribute("userWishlists", userWishlists);
             return "userFrontend";
         }else {
             return "index";
         }
+
     }
 
     @GetMapping(value = {"/createWishlist"})
@@ -40,21 +46,15 @@ public class UserController {
     @PostMapping(value = {"/createWishlist"})
     public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
         if (request.getSession().getAttribute("userId") == null) {
-            // Handle missing userId (e.g., redirect to login page)
+
             return "login";
         }
-
         int user1 = (int) request.getSession().getAttribute("userId");
         Wishlist wishlist = repository.createWishlist(list, user1);
-        return "userFrontend"; // Or use "wishlists" if you want to redirect to the wishlists page
+        return "userFrontend";
     }
 
 
-
-    @GetMapping(value = {"/wishes"})
-    public String wishes() {
-        return "wishes";
-    }
 
 
 

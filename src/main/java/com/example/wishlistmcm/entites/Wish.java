@@ -12,8 +12,7 @@ public class Wish {
     public Wish() {
     }
 
-    public Wish(int wishId, String wishName, String wishLink, double price, String wishDescription) {
-        this.wishId = wishId;
+    public Wish( String wishName, String wishLink, double price, String wishDescription) {
         this.wishName = wishName;
         this.wishLink = wishLink;
         this.price = price;
