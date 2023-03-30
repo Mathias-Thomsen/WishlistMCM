@@ -1,6 +1,8 @@
 package com.example.wishlistmcm.controllers;
 
+import com.example.wishlistmcm.DTO.UserAllWishListsDTO;
 import com.example.wishlistmcm.entites.User;
+import com.example.wishlistmcm.entites.Wishlist;
 import com.example.wishlistmcm.repositories.IRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +11,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping({""})
@@ -19,20 +23,38 @@ public class UserController {
         repository = (IRepository) context.getBean(impl);
     }
 
-    @GetMapping(value = {"/"})
-    public String index() {
-        return "index";
+    @GetMapping(value = {"/userFrontend"})
+    public String index(Model model, HttpServletRequest request) {
+        int user1 = (int) request.getSession().getAttribute("userId");
+
+        if (user1 != 0 ){
+            List<UserAllWishListsDTO> userWishlists = repository.getUserWishlists(user1);
+            model.addAttribute("userWishlists", userWishlists);
+            return "userFrontend";
+        }else {
+            return "index";
+        }
+
     }
 
-    @GetMapping(value = {"/wishlists"})
-    public String wishlists() {
-        return "wishlists";
+    @GetMapping(value = {"/createWishlist"})
+    public String showCreateWishlistForm(Model model) {
+        model.addAttribute("wishlist", new Wishlist());
+        return "createWishlist";
     }
 
-    @GetMapping(value = {"/wishes"})
-    public String wishes() {
-        return "wishes";
+    @PostMapping(value = {"/createWishlist"})
+    public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
+        if (request.getSession().getAttribute("userId") == null) {
+
+            return "login";
+        }
+        int user1 = (int) request.getSession().getAttribute("userId");
+        Wishlist wishlist = repository.createWishlist(list, user1);
+        return "userFrontend";
     }
+
+
 
 
 
