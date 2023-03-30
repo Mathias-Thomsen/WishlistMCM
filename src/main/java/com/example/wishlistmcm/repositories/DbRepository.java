@@ -20,14 +20,14 @@ public class DbRepository implements IRepository {
     public User login(String email, String password) throws LoginException {
         try{
             Connection con = DBManager.getConnection();
-            String SQL = "SELECT * FROM user WHERE email = ? AND password = ?";
+            String SQL = "SELECT * FROM user WHERE email = ? AND USER_password = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()){
-                int id = rs.getInt("id");
+                int id = rs.getInt("USER_id");
                 User user = new User(email, password);
                 user.setUserId(id);
                 return user;
@@ -59,6 +59,4 @@ public class DbRepository implements IRepository {
             throw new LoginException(ex.getMessage());
         }
     }
-
-
 }

@@ -24,16 +24,23 @@ public class LoginController {
     }
 
 
-    @GetMapping(path = "/login")
-    public String index(){
-        return "index";
+    @GetMapping("/login")
+    public String showLoginForm(HttpServletRequest request, Model model) {
+        if (request.getSession().getAttribute("userId") != null) {
+            return "wishlists";
+        } else {
+            model.addAttribute("user", new User());
+            return "login";
+        }
     }
+
+
+
     @PostMapping(path = "/login")
     public String loginUser(HttpServletRequest request, @ModelAttribute("user") User user) throws LoginException {
         User user1 = repository.login(user.getEmail(), user.getPassword());
         if(user1 != null) {
             request.getSession().setAttribute("userId", user1.getUserId());
-
             return "wishlists";
         }else {
             return "redirect:/";
