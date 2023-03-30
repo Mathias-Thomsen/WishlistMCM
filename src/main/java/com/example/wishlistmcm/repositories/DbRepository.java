@@ -2,6 +2,7 @@ package com.example.wishlistmcm.repositories;
 
 
 import com.example.wishlistmcm.entites.User;
+import com.example.wishlistmcm.entites.Wishlist;
 import com.example.wishlistmcm.utility.DBManager;
 import com.example.wishlistmcm.utility.LoginException;
 import org.springframework.stereotype.Repository;
@@ -58,5 +59,26 @@ public class DbRepository implements IRepository {
         } catch(SQLException ex){
             throw new LoginException(ex.getMessage());
         }
+    }
+
+    @Override
+    public Wishlist createWishlist(Wishlist list, int userId) {
+        try{
+            Connection con = DBManager.getConnection();
+            String SQL = "INSERT INTO wishlist (wishlist_name, user_id) VALUES (?, ?)";
+            PreparedStatement ps = con.prepareStatement(SQL, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, list.getWishlistName());
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+            Wishlist wishlist = new Wishlist(list.getWishlistName(), list.getUserId());
+            wishlist.setUserId(id);
+            return list;
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

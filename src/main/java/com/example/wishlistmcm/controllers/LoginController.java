@@ -28,7 +28,7 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginForm(HttpServletRequest request, Model model) {
         if (request.getSession().getAttribute("userId") != null) {
-            return "wishlists";
+            return "redirect:/userFrontend";
         } else {
             model.addAttribute("user", new User());
             return "login";
@@ -42,7 +42,7 @@ public class LoginController {
         User user1 = repository.login(user.getEmail(), user.getPassword());
         if(user1 != null) {
             request.getSession().setAttribute("userId", user1.getUserId());
-            return "wishlists";
+            return "redirect:/userFrontend";
         }else {
             return "redirect:/";
         }

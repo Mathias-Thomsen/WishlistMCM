@@ -1,6 +1,7 @@
 package com.example.wishlistmcm.controllers;
 
 import com.example.wishlistmcm.entites.User;
+import com.example.wishlistmcm.entites.Wishlist;
 import com.example.wishlistmcm.repositories.IRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,13 +20,22 @@ public class UserController {
         repository = (IRepository) context.getBean(impl);
     }
 
-    @GetMapping(value = {"/"})
-    public String index() {
-        return "index";
+    @GetMapping(value = {"/userFrontend"})
+    public String index(Model model, HttpServletRequest request) {
+        int user1 = (int) request.getSession().getAttribute("userId");
+
+        if (user1 != 0 ){
+            return "userFrontend";
+        }else {
+            return "index";
+        }
     }
 
-    @GetMapping(value = {"/wishlists"})
-    public String wishlists() {
+    @GetMapping(value = {"/createWishlist"})
+    public String wishlists(HttpServletRequest request, @ModelAttribute Wishlist list) {
+        int user1 = (int) request.getSession().getAttribute("userId");
+
+        Wishlist wishlist = repository.createWishlist(list, user1);
         return "wishlists";
     }
 

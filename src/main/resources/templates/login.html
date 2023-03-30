@@ -9,11 +9,11 @@
 <h1>Login</h1>
 <form th:action="@{/login}" th:object="${user}" method="post">
     <div>
-        <label for="email">Email:</label>
+        <label>Email:</label>
         <input type="email" th:field="*{email}" required>
     </div>
     <div>
-        <label for="password">Password:</label>
+        <label>Password:</label>
         <input type="password" th:field="*{password}" required>
     </div>
     <button type="submit">Login</button>
