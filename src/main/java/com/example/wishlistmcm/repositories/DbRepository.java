@@ -43,7 +43,7 @@ public class DbRepository implements IRepository {
     public User createUser(User user) throws LoginException {
         try{
             Connection con = DBManager.getConnection();
-            String SQL = "INSERT INTO users (email, password, fullname) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO user (email, user_password, fullname) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());

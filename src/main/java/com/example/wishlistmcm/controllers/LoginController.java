@@ -48,13 +48,13 @@ public class LoginController {
 
     }
 
-    @GetMapping("/signUp")
+    @GetMapping("/signup")
     public String showSignUp(Model model) {
         model.addAttribute("user", new User());
         return "signup";
     }
 
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public String signUp(HttpServletRequest request, @ModelAttribute User user) throws LoginException {
         User user1 = repository.createUser(user);
         return "login";
