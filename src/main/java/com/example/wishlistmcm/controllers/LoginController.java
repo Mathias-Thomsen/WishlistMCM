@@ -4,6 +4,7 @@ import com.example.wishlistmcm.entites.User;
 import com.example.wishlistmcm.repositories.IRepository;
 import com.example.wishlistmcm.utility.LoginException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -45,7 +46,6 @@ public class LoginController {
         }else {
             return "redirect:/";
         }
-
     }
 
     @GetMapping("/signup")
@@ -59,4 +59,14 @@ public class LoginController {
         User user1 = repository.createUser(user);
         return "login";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
+
 }
