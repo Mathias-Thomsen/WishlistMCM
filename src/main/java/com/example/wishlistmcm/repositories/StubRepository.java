@@ -1,6 +1,7 @@
 package com.example.wishlistmcm.repositories;
 
 import com.example.wishlistmcm.entites.User;
+import com.example.wishlistmcm.entites.Wishlist;
 import org.springframework.stereotype.Repository;
 
 
@@ -17,5 +18,10 @@ public class StubRepository implements IRepository {
     public User createUser(User user){
         User newUser = new User("test@test.com", "Mathias Thomsen", "1234");
         return newUser;
+    }
+
+    @Override
+    public Wishlist createWishlist(Wishlist list, int user1) {
+        return null;
     }
 }

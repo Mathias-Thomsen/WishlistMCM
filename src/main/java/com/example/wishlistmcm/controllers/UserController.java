@@ -32,12 +32,24 @@ public class UserController {
     }
 
     @GetMapping(value = {"/createWishlist"})
-    public String wishlists(HttpServletRequest request, @ModelAttribute Wishlist list) {
-        int user1 = (int) request.getSession().getAttribute("userId");
-
-        Wishlist wishlist = repository.createWishlist(list, user1);
-        return "wishlists";
+    public String showCreateWishlistForm(Model model) {
+        model.addAttribute("wishlist", new Wishlist());
+        return "createWishlist";
     }
+
+    @PostMapping(value = {"/createWishlist"})
+    public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
+        if (request.getSession().getAttribute("userId") == null) {
+            // Handle missing userId (e.g., redirect to login page)
+            return "login";
+        }
+
+        int user1 = (int) request.getSession().getAttribute("userId");
+        Wishlist wishlist = repository.createWishlist(list, user1);
+        return "userFrontend"; // Or use "wishlists" if you want to redirect to the wishlists page
+    }
+
+
 
     @GetMapping(value = {"/wishes"})
     public String wishes() {
