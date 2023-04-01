@@ -3,11 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Login</title>
-    <link th:href="@{/styles.css}" rel="stylesheet">
+    <link th:href="@{/login.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Login</h1>
 <form th:action="@{/login}" th:object="${user}" method="post">
+    <h1>Login</h1>
     <div>
         <label>Email:</label>
         <input type="email" th:field="*{email}" required>
