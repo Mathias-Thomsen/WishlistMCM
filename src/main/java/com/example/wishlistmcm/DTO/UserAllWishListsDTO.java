@@ -15,6 +15,10 @@ public class UserAllWishListsDTO {
         this.userwishes = userwishes;
     }
 
+    public UserAllWishListsDTO(List<Wish> userwishes) {
+        this.userwishes = userwishes;
+    }
+
     public int getWishListId() {
         return wishListId;
     }

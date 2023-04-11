@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Show All Wishlists</title>
+</head>
+<body>
+<h1>All Wishlists</h1>
+<table>
+    <tbody>
+    <tr th:each="wishlist : ${wishlists}">
+        <td th:text="${wishlist.getWishlistName()}"></td>
+        <td><a th:href="@{'/wishes/' + ${wishlist.getWishlistId()}}"><button type="button">See your wishes</button></a></td>
+        <td><a th:href="@{'/deleteWishlist/' + ${wishlist.getWishlistId()}}"><button type="button">Delete this wishlist</button></a></td>
+    </tr>
+
+
+
+    </tbody>
+</table>
+
+<a th:href="@{/userFrontend}"><button type="button">Back</button></a>
+</body>
+</html>
