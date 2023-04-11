@@ -1,6 +1,5 @@
 package com.example.wishlistmcm.repositories;
 
-import com.example.wishlistmcm.DTO.UserAllWishListsDTO;
 import com.example.wishlistmcm.entites.User;
 import com.example.wishlistmcm.entites.Wish;
 import com.example.wishlistmcm.entites.Wishlist;
@@ -30,12 +29,32 @@ public class StubRepository implements IRepository {
     }
 
     @Override
+    public List<Wish> getWishesByWishlistId(int wishlistId) {
+        return null;
+    }
+
+    @Override
     public Wish createWish(Wish wish, int wishlistId) {
         return null;
     }
 
     @Override
-    public List<UserAllWishListsDTO> getUserWishlists(int userid) {
+    public List<Wishlist> getUserWishlists(int userid) {
         return null;
+    }
+
+    @Override
+    public void deleteWishlist(int id) {
+
+    }
+
+    @Override
+    public Wish getWishFromId(int id) {
+        return null;
+    }
+
+    @Override
+    public void editWish(Wish wish) {
+
     }
 }

@@ -6,18 +6,18 @@
 </head>
 <body>
 <h1>Create Wish</h1>
-<form action="#" th:action="@{/createWish}" th:object="${wish}" method="post">
+<form action="#" th:action="@{'/addWish/' + ${id}}" th:object="${newWish}" method="post">
     <label for="wishName">Wish Name:</label>
-    <input type="text" id="wishName" name="wishName" th:field="*{name}" required>
+    <input type="text" id="wishName" name="wishName" th:field="*{wishName}" required>
 
     <label for="wishDescription">Wish Description:</label>
-    <textarea id="wishDescription" name="wishDescription" th:field="*{description}"></textarea>
+    <textarea id="wishDescription" name="wishDescription" th:field="*{wishDescription}"></textarea>
 
     <label for="wishPrice">Wish Price:</label>
     <input type="number" id="wishPrice" name="wishPrice" th:field="*{price}" required>
 
     <label for="wishLink">Wish Link:</label>
-    <input type="url" id="wishLink" name="wishLink" th:field="*{link}" required>
+    <input type="url" id="wishLink" name="wishLink" th:field="*{wishLink}" required>
 
     <button type="submit">Create Wish</button>
 </form>

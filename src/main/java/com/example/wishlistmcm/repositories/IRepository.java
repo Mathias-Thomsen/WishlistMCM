@@ -1,6 +1,5 @@
 package com.example.wishlistmcm.repositories;
 
-import com.example.wishlistmcm.DTO.UserAllWishListsDTO;
 import com.example.wishlistmcm.entites.User;
 import com.example.wishlistmcm.entites.Wish;
 import com.example.wishlistmcm.entites.Wishlist;
@@ -15,8 +14,15 @@ public interface IRepository {
     User createUser(User user) throws LoginException;
 
     Wishlist createWishlist(Wishlist list, int user1);
+    List<Wish> getWishesByWishlistId(int wishlistId);
 
     Wish createWish(Wish wish, int wishlistId);
 
-    List<UserAllWishListsDTO> getUserWishlists(int user1);
+    List<Wishlist> getUserWishlists(int user1);
+
+    void deleteWishlist(int id);
+
+    Wish getWishFromId(int id);
+
+    void editWish(Wish wish);
 }

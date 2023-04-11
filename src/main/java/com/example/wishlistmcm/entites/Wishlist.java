@@ -9,7 +9,12 @@ public class Wishlist {
     public Wishlist() {
     }
 
-    public Wishlist(String wishlistName, int userId) {
+    public Wishlist(int wishlistId, String wishlistName, int userId) {
+        this.wishlistId = wishlistId;
+        this.wishlistName = wishlistName;
+        this.userId = userId;
+    }
+    public Wishlist(String wishlistName, int userId){
         this.wishlistName = wishlistName;
         this.userId = userId;
     }

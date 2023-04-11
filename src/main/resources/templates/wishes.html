@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishlist</title>
+</head>
+<body>
+
+
+<h1>Wishlist</h1>
+<table>
+    <tbody>
+    <tr th:each="wish : ${wishes}">
+        <td th:text="${wish.wishName}"></td>
+        <td th:text="${wish.wishLink}"></td>
+        <td th:text="${wish.wishDescription}"></td>
+        <td th:text="${wish.price}"></td>
+        <td>
+            <a th:href="@{'/editWish/' + ${wish.getWishId()}}"><button type="button">Edit this wish</button></a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<a th:href="@{'/addWish/' + ${id}}"><button type="button">Add a new wish</button></a>
+<a th:href="@{/showAllWishlists}"><button type="button">Back</button></a>
+
+</body>
+</html>
