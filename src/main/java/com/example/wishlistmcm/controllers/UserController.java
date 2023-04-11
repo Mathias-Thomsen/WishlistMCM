@@ -24,12 +24,10 @@ public class UserController {
     }
 
     @GetMapping(value = {"/userFrontend"})
-    public String index(Model model, HttpServletRequest request) {
+    public String index(HttpServletRequest request) {
         int user1 = (int) request.getSession().getAttribute("userId");
 
         if (user1 != 0 ){
-            List<UserAllWishListsDTO> wishlist = repository.getUserWishlists(user1);
-            model.addAttribute("wishlists", wishlist);
             return "userFrontend";
         }else {
             return "index";
