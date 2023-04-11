@@ -28,8 +28,8 @@ public class UserController {
         int user1 = (int) request.getSession().getAttribute("userId");
 
         if (user1 != 0 ){
-            List<UserAllWishListsDTO> userWishlists = repository.getUserWishlists(user1);
-            model.addAttribute("userWishlists", userWishlists);
+            List<UserAllWishListsDTO> wishlist = repository.getUserWishlists(user1);
+            model.addAttribute("wishlists", wishlist);
             return "userFrontend";
         }else {
             return "index";
@@ -46,13 +46,15 @@ public class UserController {
     @PostMapping(value = {"/createWishlist"})
     public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
         if (request.getSession().getAttribute("userId") == null) {
-
             return "login";
         }
+
         int user1 = (int) request.getSession().getAttribute("userId");
         Wishlist wishlist = repository.createWishlist(list, user1);
         return "userFrontend";
     }
+
+
 
 
 

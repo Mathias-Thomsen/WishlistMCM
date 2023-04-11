@@ -18,7 +18,7 @@
 
 <h2>Wishlists:</h2>
 <ul>
-    <li th:each="wishlist : ${userWishlists}">
+    <li th:each="wishlist : ${wishlists}">
         <h3 th:text="${wishlist.getWishListName()}"></h3>
         <ul>
             <li th:each="wish : ${wishlist.getUserwishes()}">
