@@ -44,9 +44,9 @@ public class UserController {
     @PostMapping(value = {"/createWishlist"})
     public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
         if (request.getSession().getAttribute("userId") == null) {
-
             return "login";
         }
+
         int user1 = (int) request.getSession().getAttribute("userId");
         Wishlist wishlist = repository.createWishlist(list, user1);
         return "userFrontend";
@@ -126,6 +126,8 @@ public class UserController {
         repository.editWish(wish);
         return "redirect:/wishes/" + id;
     }
+
+
 
 
 
