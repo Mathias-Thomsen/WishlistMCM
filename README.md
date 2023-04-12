@@ -15,10 +15,10 @@ By providing users with a centralized location to store all their gift ideas and
 ## Table of Contents
 
 - [Usage](#usage)
-- [Contributing](#contributing.md)
 - [Credits](#credits)
 - [Additional Notes](#additional-notes)
 - [FAQs](#faqs)
+- [Contributing](./CONTRIBUTING.md)
 
 
 ## Usage
