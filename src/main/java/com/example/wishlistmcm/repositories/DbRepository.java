@@ -192,17 +192,22 @@ public class DbRepository implements IRepository {
 
     public void deleteWishlist(int id) {
         try (Connection con = DBManager.getConnection()) {
-            String SQL = "DELETE FROM wishlist WHERE WISHLIST_ID = ?;";
-            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
-                stmt.setInt(1, id);
-                stmt.executeUpdate();
+            // delete all corresponding wishes first
+            String wishSQL = "DELETE FROM wish WHERE WISHLIST_ID = ?";
+            try (PreparedStatement wishStmt = con.prepareStatement(wishSQL)) {
+                wishStmt.setInt(1, id);
+                wishStmt.executeUpdate();
             }
 
+            // now delete the wishlist
+            String wishlistSQL = "DELETE FROM wishlist WHERE WISHLIST_ID = ?";
+            try (PreparedStatement wishlistStmt = con.prepareStatement(wishlistSQL)) {
+                wishlistStmt.setInt(1, id);
+                wishlistStmt.executeUpdate();
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -220,7 +225,8 @@ public class DbRepository implements IRepository {
                 String wishLink = rs.getString("LINK_TO_WISH");
                 String wishDescription = rs.getString("WISH_DESCRIPTION");
                 double wishPrice = rs.getDouble("WISH_PRICE");
-                wish1 = new Wish(wishId, wishName, wishLink, wishDescription, wishPrice, id);
+                int wishlistId = rs.getInt("WISHLIST_ID");
+                wish1 = new Wish(wishId, wishName, wishLink, wishDescription, wishPrice, wishlistId);
 
             }
 
@@ -248,5 +254,38 @@ public class DbRepository implements IRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void deleteWish(int id) {
+        try (Connection con = DBManager.getConnection()) {
+            String SQL = "DELETE FROM WISH WHERE WISH_ID = ?;";
+            try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+                stmt.setInt(1, id);
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public int findWishlistId(int wishId) {
+        int wishlistId = 0;
+        try {
+            Connection con = DBManager.getConnection();
+            String SQL = "SELECT WISHLIST_ID FROM WISH WHERE WISH_ID = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, wishId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                wishlistId = rs.getInt("WISHLIST_ID");
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return wishlistId;
     }
 }

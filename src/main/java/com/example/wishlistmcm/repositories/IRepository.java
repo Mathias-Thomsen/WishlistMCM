@@ -25,4 +25,8 @@ public interface IRepository {
     Wish getWishFromId(int id);
 
     void editWish(Wish wish);
+
+    void deleteWish(int id);
+
+    int findWishlistId(int id);
 }

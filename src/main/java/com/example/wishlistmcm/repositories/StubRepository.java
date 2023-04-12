@@ -57,4 +57,14 @@ public class StubRepository implements IRepository {
     public void editWish(Wish wish) {
 
     }
+
+    @Override
+    public void deleteWish(int id) {
+
+    }
+
+    @Override
+    public int findWishlistId(int id) {
+        return 0;
+    }
 }

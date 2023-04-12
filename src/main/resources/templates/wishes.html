@@ -16,8 +16,10 @@
         <td th:text="${wish.wishLink}"></td>
         <td th:text="${wish.wishDescription}"></td>
         <td th:text="${wish.price}"></td>
+
         <td>
-            <a th:href="@{'/editWish/' + ${wish.getWishId()}}"><button type="button">Edit this wish</button></a>
+            <a th:href="@{'/editWish/' + ${wish.wishId}}"><button type="button">Edit this wish</button></a>
+            <a th:href="@{'/deleteWish/' + ${wish.wishId}}"><button type="button">Delete this wish</button></a>
         </td>
     </tr>
 

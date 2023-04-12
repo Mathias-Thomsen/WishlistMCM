@@ -74,8 +74,6 @@ public class UserController {
         if (request.getSession().getAttribute("userId") == null) {
             return "login";
         }
-        int user1 = (int) request.getSession().getAttribute("userId");
-
         List<Wish> wishToList = repository.getWishesByWishlistId(id);
         model.addAttribute("id", id);
         model.addAttribute("wishes", wishToList);
@@ -88,8 +86,6 @@ public class UserController {
         if (request.getSession().getAttribute("userId") == null) {
             return "login";
         }
-        int user1 = (int) request.getSession().getAttribute("userId");
-
         model.addAttribute("id", id);
         model.addAttribute("newWish", new Wish());
         return "addWish";
@@ -110,8 +106,6 @@ public class UserController {
         if (request.getSession().getAttribute("userId") == null) {
             return "login";
         }
-        int user1 = (int) request.getSession().getAttribute("userId");
-
         model.addAttribute("id", id);
         model.addAttribute("wish", repository.getWishFromId(id));
         return "editWish";
@@ -120,11 +114,18 @@ public class UserController {
 
 
     @PostMapping(value = {"/editWish/{id}"})
-    public String editWish(@ModelAttribute Wish wish) {
-
-        int id = wish.getWishId();
+    public String editWish(@ModelAttribute Wish wish, @PathVariable int id) {
         repository.editWish(wish);
-        return "redirect:/wishes/" + id;
+        int wishlistId = repository.findWishlistId(id);
+        return "redirect:/wishes/" + wishlistId;
+    }
+
+    @GetMapping(value = {"/deleteWish/{id}"})
+    public String deleteWish( @PathVariable("id") int id) {
+        int wishlistId = repository.findWishlistId(id);
+        repository.deleteWish(id);
+        return "redirect:/wishes/" + wishlistId;
+
     }
 
 
