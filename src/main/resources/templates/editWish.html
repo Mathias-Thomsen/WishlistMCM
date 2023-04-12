@@ -15,6 +15,7 @@
 
 <div th:if="${session.userId != null}">
   <form method="post" th:action="@{/editWish/{id}(id=${id})}">
+    <h1 class="loginh1">Edit wish</h1>
     <input type="text" th:name="wishName" th:value="${wish.wishName}" required>
     <input type="text" th:name="wishLink" th:value="${wish.wishLink}" required>
     <textarea th:name="wishDescription" required th:text="${wish.wishDescription}"></textarea>

@@ -6,8 +6,8 @@
     <title>Add wish</title>
 </head>
 <body>
-<h1>Create Wish</h1>
 <form action="#" th:action="@{'/addWish/' + ${id}}" th:object="${newWish}" method="post">
+    <h1 class="loginh1">Create Wish</h1>
     <label for="wishName">Wish Name:</label>
     <input type="text" id="wishName" name="wishName" th:field="*{wishName}" required>
 

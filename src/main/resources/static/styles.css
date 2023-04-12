@@ -6,11 +6,51 @@ body {
 }
 
 h1 {
-    background-color: #4CAF50;
     color: white;
     padding: 20px;
     margin: 0;
     text-align: center;
+}
+
+.img-logo{
+    height: 50%;
+    width: 50%;
+}
+
+.indexbtn{
+    background-color: #569e7d;
+}
+
+.indexbtn:hover{
+    background-color: #74B396;
+}
+
+.loginh1{
+    color: #74B396;
+}
+
+.loginbtn{
+    background-color: #74B396;
+}
+.loginbtn:hover{
+    background-color: #569e7d;
+}
+
+.frontbtn{
+    background-color: #569e7d;
+    color: #fff;
+    border: #569e7d;
+}
+
+.frontbtn:hover{
+    background-color: #74B396;
+    cursor: pointer;
+}
+
+.frontform{
+    padding: 0;
+    background-color: #74B396;
+    box-shadow: none !important;
 }
 
 form {
@@ -48,7 +88,7 @@ textarea {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #569e7d;
     border: none;
     color: white;
     text-align: center;
@@ -69,7 +109,7 @@ button {
 }
 
 .indexButtons .button {
-    background-color: #4CAF50;
+    background-color: #569e7d;
     border: none;
     color: white;
     text-align: center;
@@ -83,12 +123,12 @@ button {
 }
 
 .indexButtons .button:hover {
-    background-color: #45a049;
+    background-color: #74B396;
 }
 
 button:hover,
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #74B396;
 }
 
 body {
@@ -130,23 +170,12 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #569e7d;
     padding: 15px;
     text-align: left;
+    color: #fff;
 }
 
-th {
-    background-color: #f2f2f2;
-    color: black;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #ddd;
-}
 
 #deleteB {
     background-color: #ff3333;

@@ -7,7 +7,7 @@
 </head>
 <body>
 <form th:action="@{/login}" th:object="${user}" method="post">
-    <h1>Login</h1>
+    <h1 class="loginh1">Login</h1>
     <div>
         <label>Email:</label>
         <input type="email" th:field="*{email}" required>
@@ -16,7 +16,7 @@
         <label>Password:</label>
         <input type="password" th:field="*{password}" required>
     </div>
-    <button type="submit">Login</button>
+    <button type="submit" class="loginbtn">Login</button>
 </form>
 </body>
 </html>
