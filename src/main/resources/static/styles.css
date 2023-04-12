@@ -22,7 +22,7 @@ h1 {
 }
 
 .indexbtn:hover{
-    background-color: #74B396;
+    background-color: #4d8e70;
 }
 
 .loginh1{
@@ -43,7 +43,7 @@ h1 {
 }
 
 .frontbtn:hover{
-    background-color: #74B396;
+    background-color: #4d8e70;
     cursor: pointer;
 }
 
@@ -123,12 +123,12 @@ button {
 }
 
 .indexButtons .button:hover {
-    background-color: #74B396;
+    background-color: #4d8e70;
 }
 
 button:hover,
 button[type="submit"]:hover {
-    background-color: #74B396;
+    background-color: #4d8e70;
 }
 
 body {
