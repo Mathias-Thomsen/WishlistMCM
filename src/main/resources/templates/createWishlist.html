@@ -7,9 +7,10 @@
 </head>
 <body>
 
-<h1>Create Wishlist</h1>
+
 <form th:action="@{/createWishlist}" th:object="${wishlist}" method="post">
-    <label for="wishlistName">Wishlist Name:</label>
+    <h1>Create Wishlist</h1>
+    <label for="wishlistName"></label>
     <input type="text" id="wishlistName" name="wishlistName" th:field="*{wishlistName}" required>
     <button type="submit">Create Wishlist</button>
 </form>
