@@ -94,11 +94,12 @@ public class UserController {
 
 
     @PostMapping(value = {"/addWish/{id}"})
-    public String addWish(@PathVariable("id") int id, @ModelAttribute Wish wish) {
+    public String addWish(@PathVariable("id") int id, @ModelAttribute Wish wish, Model model) {
         Wish wish1 = repository.createWish(wish, id);
 
         return "redirect:/wishes/" + id;
     }
+
 
 
     @GetMapping(value = {"/editWish/{id}"})
@@ -127,18 +128,5 @@ public class UserController {
         return "redirect:/wishes/" + wishlistId;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

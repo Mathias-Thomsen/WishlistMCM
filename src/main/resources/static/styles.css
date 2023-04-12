@@ -1,28 +1,157 @@
 body {
+    font-family: Arial, sans-serif;
+    background-color: #74B396;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+form {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input,
+textarea,
+button[type="submit"] {
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+.indexButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.indexButtons .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
+.indexButtons .button:hover {
+    background-color: #45a049;
+}
+
+button:hover,
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.buttons {
-    display: flex;
-    gap: 1rem;
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.button {
-    text-decoration: none;
-    color: #fff;
-    background-color: #4caf50;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: bold;
+form {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.button.login {
-    background-color: #2196f3;
+form div {
+    margin-bottom: 15px;
 }
 
-.button:hover {
-    opacity: 0.8;
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+#deleteB {
+    background-color: #ff3333;
+}
+
+#deleteB:hover {
+    background-color: #f00;
 }
