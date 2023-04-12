@@ -18,7 +18,7 @@ By providing users with a centralized location to store all their gift ideas and
 - [Credits](#credits)
 - [Additional Notes](#additional-notes)
 - [FAQs](#faqs)
-- [Contributing](https://github.com/Mathias-Thomsen/WishlistMCM.git/CONTRIBUTING.md)
+- [Contributing](./WishlistMCM.git/CONTRIBUTING.md)
 
 
 ## Usage
