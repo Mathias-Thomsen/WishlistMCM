@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
 class LoginController {
   +showLoginForm()
@@ -129,4 +130,17 @@ class LoginException {
   +LoginException(message: String)
 }
 
+
+LoginController --> UserController
+UserController --> DbRepository
+UserController --> UserAllWishListsDTO
+UserController --> IRepository
+UserAllWishListsDTO --> Wishlist
+User --> Wishlist
+Wish --> Wishlist
+DbRepository --> DBManager
+DbRepository --> LoginException
+IRepository <|-- DbRepository
+IRepository <|-- StubRepository
+```
 
