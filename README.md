@@ -14,19 +14,12 @@ By providing users with a centralized location to store all their gift ideas and
 
 ## Table of Contents
 
-- [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contributing](#contributing.md)
 - [Credits](#credits)
-- [Contact](#contact)
 - [Additional Notes](#additional-notes)
 - [FAQs](#faqs)
 
-
-## Installation
-
-Instructions on how to install and set up the project. Include any prerequisites or dependencies needed.
 
 ## Usage
 
@@ -48,21 +41,12 @@ ___
 ___
 9. To delete a list, click on the list name and then click on the "Delete" button.
 ___
-## Contributing
-
-Information on how others can contribute to the project, including any guidelines or processes for submitting pull requests or bug reports.
-
-## License
-
-Information about the project's license and any relevant copyright information.
 
 ## Credits
 
-Acknowledgements of any third-party resources used in the project or people who have contributed to it.
-
-## Contact
-
-Information on how to contact the project owners or maintainers.
+* Mathias-Thomsen
+* ChristianMN
+* MaruusFN
 
 ## Additional Notes
 Colorcode for background: #74B396
