@@ -26,6 +26,24 @@ public class UserController {
         return userId;
     }
 
+
+    private boolean hasAccessToWish(int userId, int wishId) {
+        Wish wish = repository.getWishFromId(wishId);
+        int wishlistId = wish.getWishlistId();
+        return hasAccessToWishlist(userId, wishlistId);
+    }
+
+    private boolean hasAccessToWishlist(int userId, int wishlistId) {
+        List<Wishlist> wishlists = repository.getUserWishlists(wishlistId);
+        for (Wishlist wishlist : wishlists) {
+            if (wishlist.getUserId() == userId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     @GetMapping(value = {"/userFrontend"})
     public String index(HttpServletRequest request) {
         if (getUserId(request) != 0){
@@ -34,16 +52,6 @@ public class UserController {
             return "index";
         }
 
-    }
-
-    private boolean hasAccessToWishlist(Integer userId, int wishlistId) {
-        List<Wishlist> wishlists = repository.getUserWishlists(wishlistId);
-        for (Wishlist wishlist : wishlists) {
-            if (wishlist.getUserId() == userId) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @GetMapping(value = {"/createWishlist"})
@@ -55,9 +63,7 @@ public class UserController {
     @PostMapping(value = {"/createWishlist"})
     public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
         int userId = getUserId(request);
-        if (userId == 0) {
-            return "login";
-        }
+
         Wishlist wishlist = repository.createWishlist(list, userId);
         return "userFrontend";
     }
@@ -105,20 +111,20 @@ public class UserController {
 
     }
 
+
     @GetMapping(value = {"/addWish/{id}"})
     public String showAddWish(HttpServletRequest request, @PathVariable("id") int id, Model model) {
         int userId = getUserId(request);
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
+        if(!hasAccessToWish(userId, id)){
             return "error/accessDenied";
-        }else {
+        } else {
             model.addAttribute("id", id);
             model.addAttribute("newWish", new Wish());
             return "addWish";
         }
-
     }
 
 
@@ -128,13 +134,8 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
-            return "error/accessDenied";
-        }else {
-            Wish wish1 = repository.createWish(wish, id);
-            return "redirect:/wishes/" + id;
-        }
-
+        Wish wish1 = repository.createWish(wish, id);
+        return "redirect:/wishes/" + id;
     }
 
 
@@ -145,7 +146,7 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
+        if(!hasAccessToWish(userId, id)){
             return "error/accessDenied";
         }else {
             model.addAttribute("id", id);
@@ -162,13 +163,10 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
-            return "error/accessDenied";
-        }else {
-            repository.editWish(wish);
-            int wishlistId = repository.findWishlistId(id);
-            return "redirect:/wishes/" + wishlistId;
-        }
+        repository.editWish(wish);
+        int wishlistId = repository.findWishlistId(id);
+        return "redirect:/wishes/" + wishlistId;
+
     }
 
     @GetMapping(value = {"/deleteWish/{id}"})
@@ -177,7 +175,7 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
+        if(!hasAccessToWish(userId, id)){
             return "error/accessDenied";
         }else {
             int wishlistId = repository.findWishlistId(id);

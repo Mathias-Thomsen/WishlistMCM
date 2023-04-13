@@ -13,7 +13,7 @@
     <tbody>
     <tr th:each="wish : ${wishes}">
         <td th:text="${wish.wishName}"></td>
-        <td th:text="${wish.wishLink}"></td>
+        <td><a th:href="${wish.wishLink}" th:text="${wish.wishLink}"></a></td>
         <td th:text="${wish.wishDescription}"></td>
         <td th:text="${wish.price}"></td>
 
@@ -22,6 +22,7 @@
             <a th:href="@{'/deleteWish/' + ${wish.wishId}}"><button type="button">Delete this wish</button></a>
         </td>
     </tr>
+
 
     </tbody>
 </table>
