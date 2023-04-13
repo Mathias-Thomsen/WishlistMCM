@@ -25,8 +25,13 @@ public class StubRepository implements IRepository {
     }
 
     @Override
-    public void updateUser(User user) throws LoginException {
+    public void editUser(User user){
 
+    }
+
+    @Override
+    public User getUserFromId(int id) {
+        return null;
     }
 
     @Override

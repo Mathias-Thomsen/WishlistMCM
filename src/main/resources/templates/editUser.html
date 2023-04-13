@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/styles.css}" rel="stylesheet">
+  <title>Edit User</title>
+</head>
+
+<body>
+
+<div th:if="${session.userId == null}">
+  <p>Please login to continue.</p>
+  <a th:href="@{/login}">Login</a>
+</div>
+
+<form method="post" th:action="@{/editUser/{id}(id=${id})}">
+  <h1 class="loginh1">Edit user</h1>
+
+  <label for="fullName">Fullname:</label>
+  <input id="fullName" type="text" th:name="fullName" th:value="${user.fullName}" required>
+
+  <label for="email">Email:</label>
+  <input id="email" type="text" th:name="email" th:value="${user.email}" required>
+
+  <label for="password1">Password:</label>
+  <input id="password1" type="password" th:name="password" th:value="${user.password}" required>
+
+  <label for="passwordConfirm">Retype Password:</label>
+  <input id="passwordConfirm" type="password" th:name="passwordConfirm" th:value="${user.password}" required>
+
+  <input type="hidden" th:field="*{user.userId}">
+  <div th:if="${errorUser}" class="error-message" th:text="${errorUser}"></div>
+
+  <button type="submit">Save</button>
+</form>
+
+
+<div class="copyright">
+  &copy; 2023 Wishlist MCM. All rights reserved.
+</div>
+
+</body>
+
+</html>

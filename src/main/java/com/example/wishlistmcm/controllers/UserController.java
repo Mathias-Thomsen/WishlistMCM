@@ -1,8 +1,10 @@
 package com.example.wishlistmcm.controllers;
+import com.example.wishlistmcm.entites.User;
 import com.example.wishlistmcm.entites.Wish;
 import com.example.wishlistmcm.entites.Wishlist;
 import com.example.wishlistmcm.repositories.IRepository;
 
+import com.example.wishlistmcm.utility.LoginException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -45,7 +47,8 @@ public class UserController {
 
 
     @GetMapping(value = {"/userFrontend"})
-    public String index(HttpServletRequest request) {
+    public String index(HttpServletRequest request, Model model) {
+        model.addAttribute("userId", getUserId(request));
         if (getUserId(request) != 0){
             return "userFrontend";
         }else {
@@ -185,4 +188,41 @@ public class UserController {
 
     }
 
+    @GetMapping(value = {"/editUser/{id}"})
+    public String showEditUser(HttpServletRequest request, @PathVariable("id") int id, Model model) {
+        int userId = getUserId(request);
+        if (userId == 0) {
+            return "login";
+        }
+        if (id != userId) {
+            return "error/accessDenied";
+        } else {
+            model.addAttribute("id", id);
+            model.addAttribute("user", repository.getUserFromId(id));
+            return "editUser";
+        }
+    }
+
+    @PostMapping(value = {"/editUser/{id}"})
+    public String editUser(HttpServletRequest request, @ModelAttribute User user, Model model, @PathVariable int id) throws LoginException {
+        int userId = getUserId(request);
+        if (userId == 0) {
+            return "login";
+        }
+        if (user.getPassword().equals(request.getParameter("passwordConfirm"))) {
+            repository.editUser(user);
+            return "userFrontend";
+        } else {
+            model.addAttribute("errorUser", "Password does not match");
+            return "redirect:/editUser/" + userId;
+        }
+    }
+
 }
+
+
+
+
+
+
+

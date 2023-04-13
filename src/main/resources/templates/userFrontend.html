@@ -14,6 +14,9 @@
 <form class="frontform" action="/showAllWishlists" method="get">
     <input class="frontbtn" type="submit" value="Show your wishlists">
 </form>
+<form class="frontform" th:action="@{/editUser/{id}(id=${userId})}" method="get">
+    <input class="frontbtn" type="submit" value="Edit user settings">
+</form>
 
 <form class="frontform" action="/logout" method="get">
     <input class="frontbtn" type="submit" value="Logout">

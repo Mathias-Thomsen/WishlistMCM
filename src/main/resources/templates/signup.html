@@ -24,9 +24,12 @@
     <div>
         <label for="password2"> Retype Password:</label>
         <input type="password" id="password2" name="passwordConfirm" required>
+        <div th:if="${errorSignup}" class="error-message" th:text="${errorSignup}"></div>
+
     </div>
     <div>
         <button type="submit" class="loginbtn" value="Sign up">Login</button>
+        <a th:href="@{/}"><button type="button" class="loginbtn">Back</button></a>
     </div>
 </form>
 <div class="copyright">

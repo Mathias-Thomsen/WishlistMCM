@@ -38,13 +38,18 @@ public class LoginController {
 
 
     @PostMapping(path = "/login")
-    public String loginUser(HttpServletRequest request, @ModelAttribute("user") User user) throws LoginException {
-        User user1 = repository.login(user.getEmail(), user.getPassword());
-        if(user1 != null) {
-            request.getSession().setAttribute("userId", user1.getUserId());
-            return "redirect:/userFrontend";
-        }else {
-            return "redirect:/";
+    public String loginUser(HttpServletRequest request, @ModelAttribute("user") User user, Model model) {
+        try {
+            User user1 = repository.login(user.getEmail(), user.getPassword());
+            if (user1 != null) {
+                request.getSession().setAttribute("userId", user1.getUserId());
+                return "redirect:/userFrontend";
+            } else {
+                throw new LoginException("Invalid email or password");
+            }
+        } catch (LoginException e) {
+            model.addAttribute("errorLogin", e.getMessage());
+            return "login";
         }
     }
 
@@ -55,7 +60,12 @@ public class LoginController {
     }
 
     @PostMapping("/signup")
-    public String signUp(HttpServletRequest request, @ModelAttribute User user) throws LoginException {
+    public String signUp(HttpServletRequest request, @ModelAttribute User user, Model model) throws LoginException {
+
+        if (!user.getPassword().equals(request.getParameter("passwordConfirm"))) {
+            model.addAttribute("errorSignup", "Passwords do not match");
+            return "signup";
+        }
         User user1 = repository.createUser(user);
         return "login";
     }

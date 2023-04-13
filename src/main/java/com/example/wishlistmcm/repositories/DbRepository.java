@@ -62,20 +62,45 @@ public class DbRepository implements IRepository {
             throw new LoginException(ex.getMessage());
         }
     }
+
+
     @Override
-    public void updateUser(User user) throws LoginException {
+    public User getUserFromId(int id) {
         try {
             Connection con = DBManager.getConnection();
-            String SQL = "UPDATE user SET email = ?, user_password = ?, fullname = ? WHERE user_id = ?";
+            String SQL = "SELECT * FROM USER WHERE USER_ID = ?;";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());
-            ps.setString(3, user.getFullName());
-            ps.setInt(4, user.getUserId());
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1) {
-                throw new LoginException("Failed to update user.");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            User user1 = null;
+            if (rs.next()) {
+                int userId = rs.getInt("USER_ID");
+                String fullName = rs.getString("FULLNAME");
+                String email = rs.getString("EMAIL");
+                String userPassword = rs.getString("USER_PASSWORD");
+                user1 = new User(userId, email, fullName, userPassword);
+
             }
+
+            return user1;
+
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+    @Override
+    public void editUser(User user) throws LoginException {
+        try {
+            Connection con = DBManager.getConnection();
+            String SQL = "UPDATE USER SET USER_ID = ?, FULLNAME = ?, EMAIL = ?, USER_PASSWORD = ? WHERE user_id = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, user.getUserId());
+            ps.setString(2, user.getFullName());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getPassword());
+            ps.setInt(5, user.getUserId());
+            ps.executeUpdate();
+
         } catch (SQLException ex) {
             throw new LoginException(ex.getMessage());
         }
