@@ -13,6 +13,8 @@ public interface IRepository {
 
     User createUser(User user) throws LoginException;
 
+    void updateUser(User user) throws LoginException;
+
     Wishlist createWishlist(Wishlist list, int user1);
     List<Wish> getWishesByWishlistId(int wishlistId);
 
