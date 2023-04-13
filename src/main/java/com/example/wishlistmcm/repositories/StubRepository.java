@@ -3,6 +3,7 @@ package com.example.wishlistmcm.repositories;
 import com.example.wishlistmcm.entites.User;
 import com.example.wishlistmcm.entites.Wish;
 import com.example.wishlistmcm.entites.Wishlist;
+import com.example.wishlistmcm.utility.LoginException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,6 +22,11 @@ public class StubRepository implements IRepository {
     public User createUser(User user){
         User newUser = new User("test@test.com", "Mathias Thomsen", "1234");
         return newUser;
+    }
+
+    @Override
+    public void updateUser(User user) throws LoginException {
+
     }
 
     @Override

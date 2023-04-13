@@ -62,6 +62,25 @@ public class DbRepository implements IRepository {
             throw new LoginException(ex.getMessage());
         }
     }
+    @Override
+    public void updateUser(User user) throws LoginException {
+        try {
+            Connection con = DBManager.getConnection();
+            String SQL = "UPDATE user SET email = ?, user_password = ?, fullname = ? WHERE user_id = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getFullName());
+            ps.setInt(4, user.getUserId());
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new LoginException("Failed to update user.");
+            }
+        } catch (SQLException ex) {
+            throw new LoginException(ex.getMessage());
+        }
+    }
+
 
 
     public void deleteUser(int userId) throws LoginException {
