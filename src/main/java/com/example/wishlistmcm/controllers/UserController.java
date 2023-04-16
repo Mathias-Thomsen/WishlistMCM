@@ -218,6 +218,14 @@ public class UserController {
         }
     }
 
+    @GetMapping(value = {"/viewWishlist/{id}"})
+    public String shareWishlist(@PathVariable("id") int id, Model model) {
+        List<Wish> wishToList = repository.getWishesByWishlistId(id);
+        model.addAttribute("id", id);
+        model.addAttribute("wishes", wishToList);
+        return "shareWishlist";
+    }
+
 }
 
 

@@ -11,7 +11,7 @@
     <tr th:each="wishlist : ${wishlists}">
         <td th:text="${wishlist.getWishlistName()}"></td>
         <td><a th:href="@{'/wishes/' + ${wishlist.getWishlistId()}}"><button type="button">See your wishes</button></a></td>
-        <td><a th:href="'mailto:recipient@example.com?subject=Check out my wishlist!&amp;body=Hi,%0D%0A%0D%0AI wanted to share my wishlist with you. You can view it here: http://example.com/viewWishlist?wishlistId='+ ${wishlistId}"><button type="button"> Send Wishlist </button></a></td>
+        <td><a th:href="'mailto:recipient@example.com?subject=Check out my wishlist!&amp;body=Hi,%0D%0A%0D%0AI wanted to share my wishlist with you. You can view it here: http://example.com/viewWishlist?wishlistId='+ ${wishlist.wishlistId}"><button type="button"> Send Wishlist </button></a></td>
 
         <td><a th:href="@{'/deleteWishlist/' + ${wishlist.getWishlistId()}}"><button type="button" id="deleteB">Delete this wishlist</button></a></td>
     </tr>

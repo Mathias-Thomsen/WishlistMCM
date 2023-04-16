@@ -108,6 +108,7 @@ public class DbRepository implements IRepository {
 
 
 
+    @Override
     public void deleteUser(int userId) throws LoginException {
         try (Connection con = DBManager.getConnection()) {
             String SQL = "DELETE FROM USER WHERE USER_ID = ?;";
@@ -234,6 +235,7 @@ public class DbRepository implements IRepository {
     }
 
 
+    @Override
     public void deleteWishlist(int id) {
         try (Connection con = DBManager.getConnection()) {
             // delete all corresponding wishes first
@@ -281,6 +283,9 @@ public class DbRepository implements IRepository {
         }
     }
 
+
+
+    @Override
     public void editWish(Wish wish) {
         try (Connection con = DBManager.getConnection()) {
             String SQL = "UPDATE WISH SET WISH_NAME = ?, LINK_TO_WISH = ?, WISH_DESCRIPTION = ?, WISH_PRICE = ? WHERE WISH_ID = ?;";
@@ -300,6 +305,7 @@ public class DbRepository implements IRepository {
         }
     }
 
+    @Override
     public void deleteWish(int id) {
         try (Connection con = DBManager.getConnection()) {
             String SQL = "DELETE FROM WISH WHERE WISH_ID = ?;";
@@ -313,6 +319,7 @@ public class DbRepository implements IRepository {
         }
     }
 
+    @Override
     public int findWishlistId(int wishId) {
         int wishlistId = 0;
         try {

@@ -18,6 +18,8 @@ public interface IRepository {
 
     User getUserFromId(int id);
 
+    void deleteUser(int userId) throws LoginException;
+
     Wishlist createWishlist(Wishlist list, int user1);
     List<Wish> getWishesByWishlistId(int wishlistId);
 
@@ -32,6 +34,7 @@ public interface IRepository {
     void editWish(Wish wish);
 
     void deleteWish(int id);
+
 
     int findWishlistId(int id);
 }
