@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/styles.css}" rel="stylesheet">
+  <title>Wishlist</title>
+</head>
+<body>
+
+
+<h1>Wishlist</h1>
+<table>
+  <tbody>
+  <tr th:each="wish : ${wishes}">
+    <td th:text="${wish.wishName}"></td>
+    <td><a th:href="${wish.wishLink}" th:text="${wish.wishLink}"></a></td>
+    <td th:text="${wish.wishDescription}"></td>
+    <td th:text="${wish.price}"></td>
+  </tr>
+
+
+  </tbody>
+</table>
+
+<div class="copyright">
+  &copy; 2023 Wishlist MCM. All rights reserved.
+</div>
+</body>
+</html>
