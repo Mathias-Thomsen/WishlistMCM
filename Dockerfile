@@ -2,7 +2,7 @@ FROM lakruzz/lamj:latest
 
 # ENV MYSQL_ROOT_PASSWORD=root
 
-ENV PORT=8080
+ENV PORT=8088
 ENV MYSQL_PORT=3306
 
 COPY src /src
@@ -26,7 +26,7 @@ CMD set -eux; \
 # docker build  -t superhero5 .
 
 # Run like this:
-# docker run -it --rm --name superhero5 --pid=host -p 8080:8080 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root superhero5
+# docker run -it --rm --name superhero5 --pid=host -p 8080:8080 -p 3306:3306 -e password=1234 superhero5
 #
 #   - `docker run`: This command is used to run a container from an image.
 #   - `-it`: This switch allocates a pseudo-TTY and opens an interactive terminal within the container.
