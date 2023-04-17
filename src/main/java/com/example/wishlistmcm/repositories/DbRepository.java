@@ -173,7 +173,7 @@ public class DbRepository implements IRepository {
                 int wishlistId = rs.getInt("WISHLIST_ID");
                 String wishlistName = rs.getString("WISHLIST_NAME");
                 int userID = rs.getInt("USER_ID");
-                Wishlist wishlist = new Wishlist(wishlistId, wishlistName, userId);
+                Wishlist wishlist = new Wishlist(wishlistId, wishlistName, userID);
                 list.add(wishlist);
             }
 

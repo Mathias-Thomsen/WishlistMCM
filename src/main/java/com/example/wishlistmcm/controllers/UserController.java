@@ -33,12 +33,16 @@ public class UserController {
 
     private boolean hasAccessToWish(int userId, int wishId) {
         Wish wish = repository.getWishFromId(wishId);
+        if (wish == null) {
+            return true;
+        }
         int wishlistId = wish.getWishlistId();
         return hasAccessToWishlist(userId, wishlistId);
     }
 
+
     private boolean hasAccessToWishlist(int userId, int wishlistId) {
-        List<Wishlist> wishlists = repository.getUserWishlists(wishlistId);
+        List<Wishlist> wishlists = repository.getUserWishlists(userId);
         for (Wishlist wishlist : wishlists) {
             if (wishlist.getUserId() == userId) {
                 return true;
@@ -112,6 +116,7 @@ public class UserController {
             model.addAttribute("id", id);
             model.addAttribute("wishes", wishToList);
             return "wishes";
+
         }
 
     }
