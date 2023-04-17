@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBManager {
-    private static Connection con = null;
+    
 
     public static Connection getConnection(){
 
