@@ -11,27 +11,26 @@ import java.util.Properties;
 public class DBManager {
     static Connection con; 
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
+    String username = null;
+    String password = null;
+    String url = null;
 
-        String username = null;
-        String password = null;
-        String url = null;
-
-        try(InputStream input = new FileInputStream("src/main/resources/application.properties")) {
-            Properties properties = new Properties();
-            properties.load(input);
-            url = properties.getProperty("url");
-            username = properties.getProperty("username");
-            password = properties.getProperty("password");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try{
-            con = DriverManager.getConnection(url,username,password);
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-        return con;
+    try (InputStream input = DBManager.class.getClassLoader().getResourceAsStream("application.properties")) {
+        Properties properties = new Properties();
+        properties.load(input);
+        url = properties.getProperty("url");
+        username = properties.getProperty("username");
+        password = properties.getProperty("password");
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+
+    try {
+        con = DriverManager.getConnection(url, username, password);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return con;
+}
 }
