@@ -1,4 +1,4 @@
-use WishList;
+use wishList;
 
 INSERT INTO USER (FULLNAME, EMAIL, USER_PASSWORD)
 VALUES
