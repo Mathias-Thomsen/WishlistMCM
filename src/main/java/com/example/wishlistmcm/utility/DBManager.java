@@ -28,7 +28,7 @@ public class DBManager {
         }
 
         try{
-            con = DriverManager.getConnection(url,username,password);
+            if(con == null) con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wishList",username,password);
         } catch(SQLException e){
             e.printStackTrace();
         }
