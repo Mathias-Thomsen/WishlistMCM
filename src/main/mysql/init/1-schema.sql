@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS wishList;
 CREATE DATABASE wishList;
 USE wishList; 

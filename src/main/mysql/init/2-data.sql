@@ -1,3 +1,4 @@
+USE wishList;
 
 INSERT INTO USER (FULLNAME, EMAIL, USER_PASSWORD)
 VALUES
@@ -5,14 +6,13 @@ VALUES
 ('Jane Smith', 'janesmith@example.com', '1234'),
 ('Mike Brown', 'mikebrown@example.com', '1234');
 
--- insert some sample wishlists
+
 INSERT INTO WISHLIST (WISHLIST_NAME, USER_ID)
 VALUES
 ('John Doe Wishlist', 1),
 ('Jane Smith Wishlist', 2),
 ('Mike Brown Wishlist', 3);
 
--- insert some sample wishes
 INSERT INTO WISH (WISH_ID, WISH_NAME, LINK_TO_WISH, WISH_DESCRIPTION, WISH_PRICE, WISHLIST_ID)
 VALUES
 (1, 'iPhone 13', 'https://www.apple.com/shop/buy-iphone/iphone-13', 'The latest iPhone from Apple', 1099.00, 1),

@@ -14,7 +14,7 @@ RUN set -ex; \
      rm -rf /src; \
      rm -rf /pom.xml;
 
-COPY src/mysql/init/* /docker-entrypoint-initdb.d/
+COPY src/main/mysql/init/* /docker-entrypoint-initdb.d/
 
 EXPOSE $PORT $MYSQL_PORT
 
@@ -23,10 +23,10 @@ CMD set -eux; \
     java -jar /app/*.jar;
 
 # Build like this:
-# docker build  -t superhero5 .
+# docker build  -t wishlist .
 
 # Run like this:
-# docker run -it --rm --name superhero5 --pid=host -p 8080:8080 -p 3306:3306 -e password=1234 superhero5
+# docker run -it --rm --name wishlist --pid=host -p 8088:8088 -p 3306:3306 -e password=1234 wishlist
 #
 #   - `docker run`: This command is used to run a container from an image.
 #   - `-it`: This switch allocates a pseudo-TTY and opens an interactive terminal within the container.
