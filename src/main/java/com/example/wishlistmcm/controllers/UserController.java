@@ -67,7 +67,7 @@ public class UserController {
     public String processCreateWishlist(HttpServletRequest request, @ModelAttribute Wishlist list) {
         int userId = getUserId(request);
 
-        Wishlist wishlist = repository.createWishlist(list, userId);
+        repository.createWishlist(list, userId);
         return "userFrontend";
     }
 
