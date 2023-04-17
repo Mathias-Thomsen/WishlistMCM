@@ -6,6 +6,7 @@ import com.example.wishlistmcm.repositories.IRepository;
 
 import com.example.wishlistmcm.utility.LoginException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.util.List;
 public class UserController {
 
     IRepository repository;
+
     public UserController(ApplicationContext context, @Value("${wishlist.repository.impl}") String impl) {
         repository = (IRepository) context.getBean(impl);
     }
@@ -49,9 +51,9 @@ public class UserController {
     @GetMapping(value = {"/userFrontend"})
     public String index(HttpServletRequest request, Model model) {
         model.addAttribute("userId", getUserId(request));
-        if (getUserId(request) != 0){
+        if (getUserId(request) != 0) {
             return "userFrontend";
-        }else {
+        } else {
             return "index";
         }
 
@@ -84,14 +86,14 @@ public class UserController {
     }
 
     @GetMapping(value = {"/deleteWishlist/{id}"})
-    public String deleteWishlist(HttpServletRequest request, @PathVariable("id") int id){
+    public String deleteWishlist(HttpServletRequest request, @PathVariable("id") int id) {
         int userId = getUserId(request);
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
+        if (!hasAccessToWishlist(userId, id)) {
             return "error/accessDenied";
-        }else {
+        } else {
             repository.deleteWishlist(id);
             return "redirect:/showAllWishlists";
         }
@@ -103,9 +105,9 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWishlist(userId, id)){
+        if (!hasAccessToWishlist(userId, id)) {
             return "error/accessDenied";
-        }else {
+        } else {
             List<Wish> wishToList = repository.getWishesByWishlistId(id);
             model.addAttribute("id", id);
             model.addAttribute("wishes", wishToList);
@@ -121,7 +123,7 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWish(userId, id)){
+        if (!hasAccessToWish(userId, id)) {
             return "error/accessDenied";
         } else {
             model.addAttribute("id", id);
@@ -142,16 +144,15 @@ public class UserController {
     }
 
 
-
     @GetMapping(value = {"/editWish/{id}"})
     public String showEditWish(HttpServletRequest request, @PathVariable("id") int id, Model model) {
         int userId = getUserId(request);
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWish(userId, id)){
+        if (!hasAccessToWish(userId, id)) {
             return "error/accessDenied";
-        }else {
+        } else {
             model.addAttribute("id", id);
             model.addAttribute("wish", repository.getWishFromId(id));
             return "editWish";
@@ -178,9 +179,9 @@ public class UserController {
         if (userId == 0) {
             return "login";
         }
-        if(!hasAccessToWish(userId, id)){
+        if (!hasAccessToWish(userId, id)) {
             return "error/accessDenied";
-        }else {
+        } else {
             int wishlistId = repository.findWishlistId(id);
             repository.deleteWish(id);
             return "redirect:/wishes/" + wishlistId;
@@ -226,6 +227,19 @@ public class UserController {
         return "shareWishlist";
     }
 
+    @GetMapping(value = {"/deleteUser/{id}"})
+    public String deleteUser(HttpServletRequest request, @PathVariable("id") int id) throws LoginException {
+        int userId = getUserId(request);
+        if (userId == 0) {
+            return "login";
+        }
+        repository.deleteUser(userId);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
 }
 
 

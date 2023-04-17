@@ -32,6 +32,7 @@
   <div th:if="${errorUser}" class="error-message" th:text="${errorUser}"></div>
 
   <button type="submit">Save</button>
+  <a th:href="@{'/deleteUser/' + ${user.getUserId()}}"><button type="button" id="deleteB">Delete User</button></a>
   <a th:href="@{/userFrontend}"><button type="button">Back</button></a>
 </form>
 
