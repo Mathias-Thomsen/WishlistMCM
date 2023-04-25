@@ -21,7 +21,7 @@ public class DBManager {
         properties.load(input);
         url = properties.getProperty("url");
         username = properties.getProperty("username");
-        password = properties.getProperty("MYSQL_ROOT_PASSWORD");
+        password = properties.getProperty("password");
     } catch (IOException e) {
         e.printStackTrace();
     }
