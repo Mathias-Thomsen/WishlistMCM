@@ -1,6 +1,7 @@
-CREATE DATABASE wishlist;
+CREATE DATABASE IF NOT EXISTS wishlist;
 USE wishlist;
-DROP DATABASE IF EXISTS wishlist;
+
+DROP TABLE IF EXISTS wishlist;
 
 CREATE TABLE user (
   user_id INT AUTO_INCREMENT,
