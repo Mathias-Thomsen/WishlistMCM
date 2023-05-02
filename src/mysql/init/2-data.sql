@@ -10,7 +10,7 @@ VALUES
 INSERT INTO WISHLIST (WISHLIST_NAME, USER_ID)
 VALUES
 ('John Doe Wishlist', 1),
-('Jane Smith Wishlist', 2),
+('Jane Smith Wshlist', 2),
 ('Mike Brown Wishlist', 3);
 
 INSERT INTO WISH (WISH_ID, WISH_NAME, LINK_TO_WISH, WISH_DESCRIPTION, WISH_PRICE, WISHLIST_ID)
